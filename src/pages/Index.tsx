@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Menu, X, ChevronDown, Coins, Zap, Shield, Users, TrendingUp, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setIsVisible(true);
@@ -17,13 +20,25 @@ const Index = () => {
     setIsMenuOpen(false);
   };
 
+  const handleConnectWallet = () => {
+    toast({
+      title: "Feature Under Development",
+      description: "Token under development, this feature is not live yet.",
+      variant: "destructive",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* <!-- EDITABLE: Navigation Bar - Update links and text as needed --> */}
       <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Coins className="h-8 w-8 text-primary animate-glow-pulse" />
+            <img 
+              src="/MAA-favicon.png?v=2" 
+              alt="MAA Token" 
+              className="h-8 w-8 rounded-full object-cover"
+            />
             <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               $MAA Token
             </span>
@@ -49,7 +64,10 @@ const Index = () => {
             <button onClick={() => scrollToSection('community')} className="hover:text-primary transition-colors">
               Community
             </button>
-            <Button className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
+            <Button 
+              className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+              onClick={handleConnectWallet}
+            >
               Connect Wallet
             </Button>
           </div>
@@ -85,7 +103,10 @@ const Index = () => {
               <button onClick={() => scrollToSection('community')} className="block w-full text-left hover:text-primary transition-colors">
                 Community
               </button>
-              <Button className="w-full bg-gradient-primary">
+              <Button 
+                className="w-full bg-gradient-primary"
+                onClick={handleConnectWallet}
+              >
                 Connect Wallet
               </Button>
             </div>
@@ -119,13 +140,24 @@ const Index = () => {
             <p className="text-lg mb-8 max-w-3xl mx-auto text-muted-foreground">
               Earn, spend, and transfer $MAA across games—starting with SkiTime and expanding to more
             </p>
+            
+            <div className="mb-8 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+              <p className="text-sm text-yellow-600 dark:text-yellow-400">
+                <strong>Development Notice:</strong> $MAA token is currently in development. Token creation and SkiTime integration are not yet completed. This website showcases the planned ecosystem.
+              </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
-                Read Whitepaper
+              <Button size="lg" className="bg-gradient-primary hover:shadow-glow transition-all duration-300" asChild>
+                <Link to="/whitepaper">Read Whitepaper</Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-primary/30 hover:bg-primary/10">
-                Join Community
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-primary/30 hover:bg-primary/10"
+                onClick={() => window.open('https://apps.apple.com/us/app/skitime/id6477750158', '_blank')}
+              >
+                Download SkiTime
               </Button>
               <Button 
                 size="lg" 
@@ -202,9 +234,15 @@ const Index = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">$MAA in Action</h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Experience the power of $MAA through real gameplay mechanics, 
+                Experience the power of $MAA through planned gameplay mechanics, 
                 starting with SkiTime and expanding to more games.
               </p>
+              
+              <div className="mb-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <p className="text-sm text-blue-600 dark:text-blue-400">
+                  <strong>Development Status:</strong> Token creation and SkiTime integration are in progress. The mechanics described below represent the planned implementation.
+                </p>
+              </div>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -244,7 +282,10 @@ const Index = () => {
                 </div>
               </div>
 
-              <Button className="mt-8 bg-gradient-primary hover:shadow-glow transition-all duration-300">
+              <Button 
+                className="mt-8 bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                onClick={() => window.open('https://apps.apple.com/us/app/skitime/id6477750158', '_blank')}
+              >
                 Download SkiTime to Start Earning
               </Button>
             </div>
@@ -252,15 +293,10 @@ const Index = () => {
             <div className="relative">
               <Card className="bg-gradient-card border-border/50 p-8">
                 <img 
-                  src="/lovable-uploads/75632625-9f90-4f3d-afd0-ca72aa158088.png" 
-                  alt="SkiTime Game Screenshot" 
+                  src="/lovable-uploads/SkiTime-logo.png" 
+                  alt="SkiTime Game Logo" 
                   className="w-full rounded-lg shadow-lg"
                 />
-                <div className="mt-6 text-center">
-                  <Badge className="bg-primary/20 text-primary border-primary/30">
-                    Coming: Bog Bounty & More Games
-                  </Badge>
-                </div>
               </Card>
             </div>
           </div>
@@ -295,7 +331,7 @@ const Index = () => {
                         <td className="py-4 px-2 font-medium">Initial Supply</td>
                         <td className="py-4 px-2">250M $MAA</td>
                         <td className="py-4 px-2">100%</td>
-                        <td className="py-4 px-2">Pre-minted with vesting</td>
+                        <td className="py-4 px-2">Stored in Development Team Wallet as Treasury</td>
                       </tr>
                       <tr>
                         <td className="py-4 px-2 font-medium">Player Rewards</td>
@@ -304,16 +340,10 @@ const Index = () => {
                         <td className="py-4 px-2">Minted via gameplay</td>
                       </tr>
                       <tr>
-                        <td className="py-4 px-2 font-medium">Treasury Burns</td>
+                        <td className="py-4 px-2 font-medium">Spending Burns</td>
                         <td className="py-4 px-2">5% of transactions</td>
                         <td className="py-4 px-2">-</td>
-                        <td className="py-4 px-2">Deflationary mechanism</td>
-                      </tr>
-                      <tr>
-                        <td className="py-4 px-2 font-medium">Development</td>
-                        <td className="py-4 px-2">50M $MAA</td>
-                        <td className="py-4 px-2">20%</td>
-                        <td className="py-4 px-2">2-year vesting</td>
+                        <td className="py-4 px-2">Deflationary mechanism with 5% of transactions sent to Treasury</td>
                       </tr>
                     </tbody>
                   </table>
@@ -321,8 +351,9 @@ const Index = () => {
 
                 <div className="mt-8 p-4 bg-muted/50 rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    <strong>Disclaimer:</strong> $MAA is a utility token for in-game rewards and cross-game functionality. 
-                    It is not an investment instrument and should not be purchased for speculative purposes.
+                    <strong>Development Disclaimer:</strong> $MAA is a utility token in development for in-game rewards and cross-game functionality. 
+                    The token has not been created yet and SkiTime integration is not completed. This website showcases the planned ecosystem.
+                    $MAA is not an investment instrument and should not be purchased for speculative purposes.
                   </p>
                 </div>
               </CardContent>
@@ -352,13 +383,13 @@ const Index = () => {
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="text-xl font-semibold">Q4 2025</h3>
-                        <Badge className="bg-primary/20 text-primary border-primary/30">Current</Badge>
+                        <Badge className="bg-yellow-500/20 text-yellow-600 border-yellow-500/30">In Development</Badge>
                       </div>
                       <ul className="space-y-2 text-muted-foreground">
-                        <li>• $MAA Token Launch on Solana</li>
-                        <li>• SkiTime Integration & First Rewards</li>
+                        <li>• $MAA Token Creation on Solana</li>
+                        <li>• SkiTime Integration Development</li>
                         <li>• Community Building & Partnerships</li>
-                        <li>• Initial Liquidity & Exchange Listings</li>
+                        <li>• Whitepaper & Documentation</li>
                       </ul>
                     </div>
                   </div>
@@ -474,7 +505,11 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Coins className="h-6 w-6 text-primary" />
+                <img 
+                  src="/MAA-favicon.png?v=2" 
+                  alt="MAA Token" 
+                  className="h-6 w-6 rounded-full object-cover"
+                />
                 <span className="text-lg font-bold">$MAA Token</span>
               </div>
               <p className="text-muted-foreground">
@@ -517,9 +552,15 @@ const Index = () => {
           </div>
 
           <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground mb-4">
               © 2025 $MAA Token. All rights reserved.
             </p>
+            <div className="max-w-2xl mx-auto p-4 bg-muted/50 rounded-lg">
+              <p className="text-sm text-muted-foreground">
+                <strong>Disclaimer:</strong> $MAA is a utility token for in-game rewards and cross-game functionality. 
+                It is not an investment instrument and should not be purchased for speculative purposes.
+              </p>
+            </div>
           </div>
         </div>
       </footer>

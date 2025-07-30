@@ -1,73 +1,209 @@
-# Welcome to your Lovable project
+# $MAA Token - Decentralized Rewards for Mobile Gaming
 
-## Project info
+A modern, responsive website for the $MAA token ecosystem - a Solana-based fungible token designed for cross-game rewards and seamless player ownership across mobile gaming ecosystems.
 
-**URL**: https://lovable.dev/projects/49fddc83-11ca-4b2c-bc25-19cbc380a5df
+## 🎮 Project Overview
 
-## How can I edit this code?
+$MAA is a utility token currently in development that will enable:
+- **Cross-game rewards** across mobile gaming platforms
+- **Seamless player ownership** of in-game assets
+- **Integration with SkiTime** and future gaming platforms
+- **Decentralized reward mechanics** for mobile gaming
 
-There are several ways of editing your application.
+## 🚀 Features
 
-**Use Lovable**
+### Website Features
+- **Modern UI/UX**: Built with React, TypeScript, and Tailwind CSS
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Interactive Components**: Toast notifications, smooth scrolling, and dynamic content
+- **Whitepaper Integration**: Dedicated page with PDF viewer and download options
+- **Development Status Notices**: Clear communication about current development phase
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/49fddc83-11ca-4b2c-bc25-19cbc380a5df) and start prompting.
+### Technical Features
+- **Vite Build System**: Fast development and optimized production builds
+- **Shadcn/ui Components**: Professional, accessible UI components
+- **React Router**: Client-side routing for seamless navigation
+- **Toast Notifications**: User feedback system for interactive elements
+- **Makefile Integration**: Simplified development workflow
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📋 Prerequisites
 
-**Use your preferred IDE**
+Before running this project, ensure you have the following installed:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Node.js** (v18 or higher)
+- **npm** (comes with Node.js)
+- **Git** (for version control)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠️ Installation & Setup
 
-Follow these steps:
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd gamefi-maaflow
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 3. Start Development Server
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The website will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🎯 Available Commands
 
-**Use GitHub Codespaces**
+This project includes a Makefile for simplified development workflow:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+# Start development server
+make start
 
-## What technologies are used for this project?
+# Stop development server
+make stop
 
-This project is built with:
+# Install dependencies
+make install
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Build for production
+make build
 
-## How can I deploy this project?
+# Clean build artifacts
+make clean
 
-Simply open [Lovable](https://lovable.dev/projects/49fddc83-11ca-4b2c-bc25-19cbc380a5df) and click on Share -> Publish.
+# Show help
+make help
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 📁 Project Structure
 
-Yes, you can!
+```
+gamefi-maaflow/
+├── public/                 # Static assets
+│   ├── MAA-favicon.png    # Project favicon
+│   ├── maa-whitepaper.pdf # Whitepaper document
+│   └── lovable-uploads/   # Additional assets
+├── src/
+│   ├── components/        # Reusable UI components
+│   │   └── ui/           # Shadcn/ui components
+│   ├── pages/            # Page components
+│   │   ├── Index.tsx     # Main landing page
+│   │   └── Whitepaper.tsx # Whitepaper page
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utility functions
+│   └── App.tsx           # Main app component
+├── Makefile              # Development commands
+├── package.json          # Project dependencies
+├── vite.config.ts        # Vite configuration
+└── tailwind.config.ts    # Tailwind CSS configuration
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🎨 Key Components
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Main Landing Page (`src/pages/Index.tsx`)
+- Hero section with call-to-action buttons
+- About $MAA token information
+- Utility and tokenomics sections
+- Roadmap with development status
+- Community links and disclaimers
+
+### Whitepaper Page (`src/pages/Whitepaper.tsx`)
+- PDF viewer integration
+- Download functionality
+- Development status notices
+- Professional presentation
+
+### Navigation & Footer
+- Responsive navigation menu
+- Mobile-friendly design
+- Footer with disclaimers and links
+
+## 🔧 Development Status
+
+### Current Phase: Development
+- ✅ Website design and implementation
+- ✅ Whitepaper integration
+- ✅ Development status notices
+- ✅ Toast notification system
+- ✅ Responsive design
+- 🔄 Token creation (in progress)
+- 🔄 SkiTime integration (in progress)
+
+### Important Disclaimers
+- **Token Status**: $MAA token is currently in development and has not been created yet
+- **SkiTime Integration**: Integration with SkiTime is not completed
+- **Investment Warning**: $MAA is a utility token, not an investment instrument
+- **Development Notice**: All features described are planned implementations
+
+## 🎮 SkiTime Integration
+
+The website includes direct links to the SkiTime Apple App Store page:
+- **App Store Link**: https://apps.apple.com/us/app/skitime/id6477750158
+- **Universal Compatibility**: Works for both iPhone and iPad users
+- **Future Integration**: Planned for cross-game reward mechanics
+
+## 🚨 Important Notices
+
+### Development Disclaimers
+The website includes multiple development status notices:
+- Hero section development notice
+- Utility section development status
+- Roadmap development badges
+- Tokenomics development disclaimer
+- Footer legal disclaimer
+
+### User Experience Features
+- **Connect Wallet Button**: Shows toast notification about development status
+- **Download SkiTime**: Direct App Store links
+- **Whitepaper Access**: PDF viewer and download options
+- **Responsive Design**: Optimized for all device sizes
+
+## 🛡️ Legal & Compliance
+
+### Disclaimers Included
+- Token development status
+- Non-investment nature of $MAA
+- Development phase notices
+- SkiTime integration status
+
+### User Protection
+- Clear communication about development phase
+- No misleading investment claims
+- Transparent status updates
+- Professional presentation
+
+## 🚀 Deployment
+
+### Production Build
+```bash
+npm run build
+```
+
+### Build Output
+The build process creates a `dist/` folder with optimized production files ready for deployment.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is proprietary and confidential. All rights reserved.
+
+## 📞 Support
+
+For questions or support regarding the $MAA token project:
+- Check the development status notices on the website
+- Review the whitepaper for detailed information
+- Contact the development team for technical inquiries
+
+---
+
+**Note**: This website represents the planned $MAA token ecosystem. The token is currently in development and all features described are intended implementations, not currently live functionality.
