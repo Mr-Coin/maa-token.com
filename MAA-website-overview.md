@@ -65,6 +65,7 @@ The $MAA Token website serves as the official landing page for a Solana-based ut
 - **Hot Module Replacement**: Instant development feedback
 - **Source Maps**: Debugging support
 - **Development Server**: Local development environment
+- **GitHub Actions**: Automated deployment workflow
 
 ---
 
@@ -79,7 +80,8 @@ gamefi-maaflow/
 │   │   └── SkiTime-logo.png        # SkiTime branding
 │   ├── favicon.ico                 # Legacy favicon (removed)
 │   ├── placeholder.svg             # Default placeholder
-│   └── robots.txt                  # SEO configuration
+│   ├── robots.txt                  # SEO configuration
+│   └── 404.html                    # SPA routing for GitHub Pages
 ├── src/
 │   ├── components/                 # Reusable UI components
 │   │   └── ui/                    # Shadcn/ui components
@@ -159,7 +161,10 @@ gamefi-maaflow/
 ├── eslint.config.js              # ESLint configuration
 ├── components.json               # Shadcn/ui configuration
 ├── Makefile                      # Development commands
-└── README.md                     # Project documentation
+├── README.md                     # Project documentation
+├── DEPLOYMENT.md                 # GitHub Pages deployment guide
+└── .github/workflows/            # GitHub Actions
+    └── deploy.yml                # Automatic deployment workflow
 ```
 
 ---
@@ -224,21 +229,27 @@ const App = () => (
 ### Vite Configuration
 ```typescript
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import path from 'path'
+import { componentTagger } from 'lovable-tagger'
 
-export default defineConfig({
-  plugins: [react()],
+export default defineConfig(({ mode }) => ({
+  base: process.env.NODE_ENV === 'production' ? '/gamefi-maaflow/' : '/',
+  server: {
+    host: "::",
+    port: 8080
+  },
+  plugins: [
+    react(),
+    mode === 'development' &&
+    componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
-    host: "::",
-    port: 8080
-  }
-})
+}))
 ```
 
 ---
@@ -785,6 +796,9 @@ server: {
   host: "::", // Listen on all interfaces
   port: 8080  // Default port
 }
+
+// GitHub Pages Base Path
+base: process.env.NODE_ENV === 'production' ? '/gamefi-maaflow/' : '/'
 ```
 
 ---
@@ -803,8 +817,32 @@ dist/
 │   ├── index-[hash].js
 │   ├── index-[hash].css
 │   └── [hash].png
+├── 404.html                    # SPA routing support
 └── [other assets]
 ```
+
+### GitHub Pages Deployment
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v3
+```
+
+### Deployment URL Structure
+- **Main Site**: `https://[username].github.io/gamefi-maaflow/`
+- **Whitepaper**: `https://[username].github.io/gamefi-maaflow/whitepaper`
+- **Assets**: `https://[username].github.io/gamefi-maaflow/MAA-favicon.png`
 
 ### Build Optimization
 - **Code Splitting**: Automatic chunk splitting by Vite
@@ -819,6 +857,10 @@ dist/
 // All files in public/ are served at root path
 // Example: public/maa-whitepaper.pdf → /maa-whitepaper.pdf
 
+// GitHub Pages Base Path
+// Production builds use /gamefi-maaflow/ base path
+// Development uses / base path
+
 // Cache Busting
 // Images with version parameters
 src="/MAA-favicon.png?v=2"
@@ -827,6 +869,10 @@ src="/MAA-favicon.png?v=2"
 // Meta tags in index.html
 <meta name="description" content="$MAA is a Solana-based fungible token..." />
 <meta property="og:title" content="$MAA Token - Decentralized Rewards for Mobile Gaming" />
+
+// SPA Routing
+// 404.html handles client-side routing on GitHub Pages
+// index.html includes routing script for SPA support
 ```
 
 ---
@@ -870,6 +916,10 @@ src="/MAA-favicon.png?v=2"
 // HTML Caching
 // No cache for HTML files
 // Long-term cache for assets
+
+// GitHub Pages Caching
+// Assets served with appropriate cache headers
+// 404.html enables SPA routing
 ```
 
 ---
@@ -1109,6 +1159,12 @@ const scrollToSection = (id: string) => {
 // Navigation Issues
 // Problem: Links not working
 // Solution: Check React Router setup and route definitions
+
+// GitHub Pages Issues
+// Problem: 404 errors on direct links
+// Solution: 404.html handles SPA routing
+// Problem: Assets not loading
+// Solution: Check base path configuration in vite.config.ts
 ```
 
 ### Debugging Tools

@@ -25,6 +25,8 @@ $MAA is a utility token currently in development that will enable:
 - **React Router**: Client-side routing for seamless navigation
 - **Toast Notifications**: User feedback system for interactive elements
 - **Makefile Integration**: Simplified development workflow
+- **GitHub Actions**: Automated deployment to GitHub Pages
+- **SPA Routing**: Client-side routing support for GitHub Pages
 
 ## 📋 Prerequisites
 
@@ -85,7 +87,8 @@ gamefi-maaflow/
 ├── public/                 # Static assets
 │   ├── MAA-favicon.png    # Project favicon
 │   ├── maa-whitepaper.pdf # Whitepaper document
-│   └── lovable-uploads/   # Additional assets
+│   ├── lovable-uploads/   # Additional assets
+│   └── 404.html          # SPA routing for GitHub Pages
 ├── src/
 │   ├── components/        # Reusable UI components
 │   │   └── ui/           # Shadcn/ui components
@@ -95,10 +98,14 @@ gamefi-maaflow/
 │   ├── hooks/            # Custom React hooks
 │   ├── lib/              # Utility functions
 │   └── App.tsx           # Main app component
+├── .github/workflows/     # GitHub Actions
+│   └── deploy.yml        # Automatic deployment
 ├── Makefile              # Development commands
 ├── package.json          # Project dependencies
 ├── vite.config.ts        # Vite configuration
-└── tailwind.config.ts    # Tailwind CSS configuration
+├── tailwind.config.ts    # Tailwind CSS configuration
+├── DEPLOYMENT.md         # Deployment guide
+└── README.md             # Project documentation
 ```
 
 ## 🎨 Key Components
@@ -129,6 +136,8 @@ gamefi-maaflow/
 - ✅ Development status notices
 - ✅ Toast notification system
 - ✅ Responsive design
+- ✅ GitHub Pages deployment configuration
+- ✅ Automated deployment workflow
 - 🔄 Token creation (in progress)
 - 🔄 SkiTime integration (in progress)
 
@@ -177,13 +186,40 @@ The website includes multiple development status notices:
 
 ## 🚀 Deployment
 
-### Production Build
+### GitHub Pages (Recommended)
+
+The website is configured for automatic deployment to GitHub Pages:
+
+1. **Push to Main Branch**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Enable GitHub Pages**
+   - Go to repository Settings > Pages
+   - Set Source to "Deploy from a branch"
+   - Select "gh-pages" branch and "/ (root)" folder
+   - Click "Save"
+
+3. **Automatic Deployment**
+   - GitHub Actions will build and deploy automatically
+   - Site will be live at: `https://[username].github.io/gamefi-maaflow/`
+
+### Manual Production Build
 ```bash
 npm run build
 ```
 
 ### Build Output
 The build process creates a `dist/` folder with optimized production files ready for deployment.
+
+### Deployment Configuration
+- **Base Path**: `/gamefi-maaflow/` for GitHub Pages
+- **SPA Routing**: 404.html handles client-side routing
+- **Assets**: All static files served from root path
+- **SEO**: Meta tags and Open Graph configured
 
 ## 🤝 Contributing
 
@@ -203,6 +239,11 @@ For questions or support regarding the $MAA token project:
 - Check the development status notices on the website
 - Review the whitepaper for detailed information
 - Contact the development team for technical inquiries
+
+### Deployment Support
+- **Deployment Guide**: See `DEPLOYMENT.md` for detailed instructions
+- **Technical Overview**: See `MAA-website-overview.md` for comprehensive documentation
+- **GitHub Actions**: Check the Actions tab in your repository for deployment logs
 
 ---
 
