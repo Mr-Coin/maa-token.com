@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Menu, X, ChevronDown, Coins, Zap, Shield, Users, TrendingUp, Clock } from "lucide-react";
+import { Menu, X, ChevronDown, Coins, Zap, Shield, Users, TrendingUp, Clock, Twitter, MessageCircle, Apple } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
@@ -459,29 +459,51 @@ const Index = () => {
             <Card className="bg-gradient-card border-border/50">
               <CardContent className="p-8">
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-semibold mb-4">Stay in the Loop</h3>
+                  <h3 className="text-2xl font-semibold mb-4">Connect With Us</h3>
                   <p className="text-muted-foreground mb-6">
-                    Get the latest updates on $MAA token developments, new game integrations, and community events.
+                    Join our community across various platforms to stay updated on $MAA token developments, new game integrations, and community events.
                   </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email" 
-                      className="flex-1 px-4 py-2 rounded-lg bg-input border border-border focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                    <Button className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
-                      Subscribe
-                    </Button>
-                  </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Button variant="outline" className="border-primary/30 hover:bg-primary/10" size="lg">
-                    Follow on X/Twitter
+                <div className="space-y-4">
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-primary/30 hover:bg-primary/10 justify-start" 
+                    size="lg"
+                    onClick={() => window.open('https://x.com/MAA_Token', '_blank')}
+                  >
+                    <Twitter className="h-5 w-5 mr-3 text-primary" />
+                    Join us for discussing MAA on X
                   </Button>
-                  <Button variant="outline" className="border-secondary/30 hover:bg-secondary/10" size="lg">
-                    Email: SkiTime@gmail.com
+                  
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-secondary/30 hover:bg-secondary/10 justify-start" 
+                    size="lg"
+                    onClick={() => window.open('https://x.com/SkiTimeSupport', '_blank')}
+                  >
+                    <Twitter className="h-5 w-5 mr-3 text-secondary" />
+                    Join us for discussing SkiTime on X
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-accent/30 hover:bg-accent/10 justify-start" 
+                    size="lg"
+                    onClick={() => window.open('https://t.me/maa_token', '_blank')}
+                  >
+                    <MessageCircle className="h-5 w-5 mr-3 text-accent" />
+                    Join us for discussion on Telegram
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-border hover:bg-muted/50 justify-start" 
+                    size="lg"
+                    onClick={() => window.open('https://apps.apple.com/us/app/skitime/id6477750158', '_blank')}
+                  >
+                    <Apple className="h-5 w-5 mr-3" />
+                    Leave a review of SkiTime on the App Store
                   </Button>
                 </div>
 
